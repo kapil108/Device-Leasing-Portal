@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+    /* Vibrant Dark Theme Palette */
+    --background: #0a0a0f;
+    --foreground: #ffffff;
+
+    --primary: #bc13fe;
+    /* Electric Purple */
+    --primary-glow: rgba(188, 19, 254, 0.5);
+
+    --secondary: #00f3ff;
+    /* Neon Cyan */
+    --secondary-glow: rgba(0, 243, 255, 0.5);
+
+    --accent: #ff0055;
+    /* Hot Pink */
+
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.1);
+
+    /* Glassmorphism */
+    --glass-bg: rgba(18, 18, 24, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-outfit), sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(188, 19, 254, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.15), transparent 25%);
+    background-attachment: fixed;
+}
+
+/* Custom Utilities */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #fff 0%, #b8b8b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-primary {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    50% {
+        box-shadow: 0 0 25px var(--primary-glow), 0 0 10px var(--secondary-glow);
+    }
+
+    100% {
+        box-shadow: 0 0 10px var(--primary-glow);
+    }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 3s infinite;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hover Effects */
+.hover-glow:hover {
+    box-shadow: 0 0 20px var(--secondary-glow);
+    border-color: var(--secondary);
+}
